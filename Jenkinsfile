@@ -3,13 +3,16 @@ pipeline {
     environment{
         APP_NAME = 'Pay_Gateway'
     }
+   parameters {
+      choice choices: ['DEV', 'STG', 'PRE-PROD', 'PROD'], name: 'app_env'
+    }
     stages {
         stage('Job1') {
             agent {label 'agentSlave'}
             steps {
-                withEnv(["version=1.0", "env=prod"]){                    
-                     sh 'This is version ${version} and environment is ${env}'
-                }
+                // withEnv(["version=1.0", "env=prod"]){                    
+                //      sh 'This is version ${version} and environment is ${env}'
+                // }
                  echo "It is ${env.JOB_DISPLAY_URL}"
                 echo "Welcome to ${APP_NAME} application."
                
