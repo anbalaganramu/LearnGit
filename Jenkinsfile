@@ -8,6 +8,8 @@ pipeline {
             agent {label 'agentSlave'}
             steps {
                 echo "Welcome to ${APP_NAME} application."
+                echo "This is ${env.BRANCH_NAME}"
+                echo "It is ${env.JOB_DISPLAY_URL}"
             }
         }
         stage('Job2') {
