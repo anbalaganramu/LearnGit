@@ -7,9 +7,10 @@ pipeline {
         stage('Job1') {
             agent {label 'agentSlave'}
             steps {
+                withEnv(["version=1.0", "env=prod"])
                 echo "Welcome to ${APP_NAME} application."
-                echo "This is ${env.BRANCH_NAME}"
                 echo "It is ${env.JOB_DISPLAY_URL}"
+                echo "This is version ${version} and environment is ${prod}"
             }
         }
         stage('Job2') {
